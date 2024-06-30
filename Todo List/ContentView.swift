@@ -10,16 +10,14 @@ import SwiftUI
 struct Item: Identifiable {
     var id = UUID()
     var name: String
-    var dueDate: String
-    var dueMonth: String
-    var dueYear: String
+    var date: Date
     var subject: String
     var completed: Bool
 }
 
 struct ContentView: View {
     @State var homework: [Item] = [
-        Item(name: "New", dueDate: "Select date", dueMonth: "Select month", dueYear: "Select year", subject: "Subject", completed: false)
+        Item(name: "New", date: Date(timeInterval: timeIntervalSince1970: 0), subject: "Subject", completed: false)
     ]
     var body: some View {
         NavigationStack {
@@ -27,9 +25,7 @@ struct ContentView: View {
                 NavigationLink {
                     DetailView(
                         name: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].name,
-                        dueDate: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].dueDate,
-                        dueMonth: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].dueMonth,
-                        dueYear: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].dueYear,
+                        date: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].dueDate,
                         subject: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].subject,
                         completed: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].completed
                     )

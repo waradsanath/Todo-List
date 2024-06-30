@@ -12,6 +12,7 @@
 		81E7105D2C3122BE0021243D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81E7105C2C3122BE0021243D /* Assets.xcassets */; };
 		81E710602C3122BE0021243D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81E7105F2C3122BE0021243D /* Preview Assets.xcassets */; };
 		81E710692C3134FB0021243D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E710682C3134FB0021243D /* DetailView.swift */; };
+		81E7106B2C3157FB0021243D /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E7106A2C3157FB0021243D /* InputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		81E7105C2C3122BE0021243D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81E7105F2C3122BE0021243D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		81E710682C3134FB0021243D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		81E7106A2C3157FB0021243D /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				81E710582C3122BD0021243D /* Todo_ListApp.swift */,
 				81E7105A2C3122BD0021243D /* ContentView.swift */,
 				81E710682C3134FB0021243D /* DetailView.swift */,
+				81E7106A2C3157FB0021243D /* InputView.swift */,
 				81E7105C2C3122BE0021243D /* Assets.xcassets */,
 				81E7105E2C3122BE0021243D /* Preview Content */,
 			);
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81E7105B2C3122BD0021243D /* ContentView.swift in Sources */,
+				81E7106B2C3157FB0021243D /* InputView.swift in Sources */,
 				81E710692C3134FB0021243D /* DetailView.swift in Sources */,
 				81E710592C3122BD0021243D /* Todo_ListApp.swift in Sources */,
 			);
@@ -276,6 +280,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Todo List/Preview Content\"";
+				DEVELOPMENT_TEAM = W254VRMYYH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -304,6 +309,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Todo List/Preview Content\"";
+				DEVELOPMENT_TEAM = W254VRMYYH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
