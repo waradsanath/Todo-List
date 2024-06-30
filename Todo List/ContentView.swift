@@ -23,19 +23,28 @@ struct ContentView: View {
     ]
     var body: some View {
         NavigationStack {
-            ForEach(homework, id: \.id) { homework in
-                List {
-                    VStack (alignment: .leading) {
-                        Text(homework.name)
+            List(homework) { homeworkItem in
+                NavigationLink {
+                    DetailView(
+                        name: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].name,
+                        dueDate: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].dueDate,
+                        dueMonth: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].dueMonth,
+                        dueYear: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].dueYear,
+                        subject: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].subject,
+                        completed: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].completed
+                    )
+                } label: {
+                    VStack(alignment: .leading) {
+                        Text(homeworkItem.name) // Correct usage
                             .font(.title)
                             .bold()
-                        Text("Due: \(homework.dueDate) \(homework.dueMonth) \(homework.dueYear)")
+                        Text("Due: \(homeworkItem.dueDate) \(homeworkItem.dueMonth) \(homeworkItem.dueYear)")
                             .foregroundStyle(Color.gray)
                             .font(.caption)
                     }
                 }
             }
-                .navigationTitle("Homework")
+            .navigationTitle("Homework")
         }
     }
 }
