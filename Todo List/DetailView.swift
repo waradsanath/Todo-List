@@ -8,29 +8,26 @@
 import SwiftUI
 
 struct DetailView: View {
-    @Binding var name: String
-    @Binding var dueDate: Date
-    @Binding var subject: String
-    @Binding var completed: Bool
+    @Binding var item: Item
     var body: some View {
         NavigationStack {
             List {
-                InputView(text: name, title: "Name")
+                InputView(text: item.name, title: "Name")
                 DatePicker(
                     "Due Date",
-                    selection: $dueDate,
+                    selection: $item.dueDate,
                     displayedComponents: [.date]
                 )
-                InputView(text: subject, title: "Subject")
-                Toggle(isOn: $completed) {
+                InputView(text: item.subject, title: "Subject")
+                Toggle(isOn: $item.completed) {
                     Text("Completed")
                 }
             }
-            .navigationTitle(name)
+            .navigationTitle(item.name)
         }
     }
 }
 
 #Preview {
-    DetailView(name: .constant("name"), dueDate: .constant(Date()), subject: .constant("subject"), completed: .constant(false))
+    DetailView(item: .constant(Item(name: "New", dueDate: Date(timeIntervalSinceNow: 86400), subject: "Subject", completed: false)))
 }

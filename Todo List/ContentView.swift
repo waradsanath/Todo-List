@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Item: Identifiable {
+struct Item: Identifiable, Codable {
     var id = UUID()
     var name: String
     var dueDate: Date
@@ -16,25 +16,20 @@ struct Item: Identifiable {
 }
 
 struct ContentView: View {
-    @AppStorage ("homework") var homework: [Item] = [
+    @State var homework: [Item] = [
         Item(name: "New", dueDate: Date(timeIntervalSinceNow: 86400), subject: "Subject", completed: false)
     ]
     var body: some View {
         NavigationStack {
-            List(homework) { homeworkItem in
+            List($homework) { $item in
                 NavigationLink {
-                    DetailView(
-                        name: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].name,
-                        dueDate: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].dueDate,
-                        subject: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].subject,
-                        completed: $homework[homework.firstIndex(where: { $0.id == homeworkItem.id })!].completed
-                    )
+                    DetailView(item: $item)
                 } label: {
-                    VStack(alignment: .leading) {
-                        Text(homeworkItem.name)
+                    VStack(alignment:.leading) {
+                        Text(item.name)
                             .font(.title)
                             .bold()
-                        Text("Due: \(homeworkItem.dueDate)")
+                        Text("Due: \(item.dueDate, formatter: dateFormatter)")
                             .foregroundStyle(Color.gray)
                             .font(.caption)
                     }
@@ -43,6 +38,12 @@ struct ContentView: View {
             .navigationTitle("Homework")
         }
     }
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        return formatter
+    }()
 }
 
 #Preview {
