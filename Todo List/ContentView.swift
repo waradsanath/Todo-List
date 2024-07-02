@@ -16,7 +16,7 @@ struct Item: Identifiable {
 }
 
 struct ContentView: View {
-    @State var homework: [Item] = [
+    @AppStorage ("homework") var homework: [Item] = [
         Item(name: "New", dueDate: Date(timeIntervalSinceNow: 86400), subject: "Subject", completed: false)
     ]
     var body: some View {
