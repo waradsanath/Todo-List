@@ -15,6 +15,7 @@ struct InputView: View {
             Text(title)
             TextField(title, text: $text)
                 .padding(.horizontal, 12)
+                .padding(.vertical, 10)
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.gray, lineWidth: 0.5)

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     @Binding var name: String
-    @Binding var date: Date
+    @Binding var dueDate: Date
     @Binding var subject: String
     @Binding var completed: Bool
     var body: some View {
@@ -18,9 +18,13 @@ struct DetailView: View {
                 InputView(text: name, title: "Name")
                 DatePicker(
                     "Due Date",
-                    selection: $date,
+                    selection: $dueDate,
                     displayedComponents: [.date]
                 )
+                InputView(text: subject, title: "Subject")
+                Toggle(isOn: $completed) {
+                    Text("Completed")
+                }
             }
             .navigationTitle(name)
         }
@@ -28,5 +32,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(name: .constant("Name"), date: .constant(Date()), subject: .constant("subject"), completed: .constant(false))
+    DetailView(name: .constant("name"), dueDate: .constant(Date()), subject: .constant("subject"), completed: .constant(false))
 }
