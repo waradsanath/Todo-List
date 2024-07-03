@@ -19,6 +19,7 @@ struct ContentView: View {
     @State var homework: [Item] = [
         Item(name: "New", dueDate: Date(timeIntervalSinceNow: 86400), subject: "Subject", completed: false)
     ]
+    @AppStorage("isDarkMode") var isDarkMode: Bool = false
     var body: some View {
         NavigationStack {
             List($homework) { $item in
@@ -36,6 +37,20 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Homework")
+            .toolbar {
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    Button {
+                        homework.append(Item(name: "New", dueDate: Date(timeIntervalSinceNow: 86400), subject: "Subject", completed: false))
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    Button {
+                        isDarkMode.toggle()
+                    } label: {
+                        isDarkMode ? Image(systemName: "moon.stars") : Image(systemName: "sun.max")
+                    }
+                }
+            }
         }
     }
     let dateFormatter: DateFormatter = {
